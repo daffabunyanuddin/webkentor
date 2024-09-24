@@ -7,6 +7,7 @@ if($_POST){
     $No_tlp=$_POST['No_tlp'];
     $password= $_POST['password'];
     $id_jabatan=$_POST['id_jabatan'];
+
     // if(empty($Nama_pegawai)){
     //     echo "<script>alert('nama pegawai tidak boleh kosong');location.href='register.php';</script>";
 
@@ -17,13 +18,11 @@ if($_POST){
     //     echo "<script>alert('password tidak boleh kosong');location.href='register.php';</script>";
     // } else {
         include "Koneksi.php";
-        $insert=mysqli_query($conn,"insert into tabel_pegawai (Nik, Nama_pegawai, gender, alamat, No_tlp, password, id_)
-         value ('".$Nik."','".$Nama_pegawai."','".$alamat."','".$gender."','".$No_tlp."','".md5($password)."','".$id_jabatan."')") or die(mysqli_error($conn));
+        $insert=mysqli_query($conn,"INSERT INTO `tabel_pegawai` (`Nik`, `Nama`, `Alamat`, `Jenis_kelamin`, `no_tlp`, `password`, `id_jabatan`) VALUES ('$Nik', '$Nama_pegawai', '$$alamat', '$gender', '$No_tlp', '".md5($password)."', '$id_jabatan');") or die(mysqli_error($conn));
         if($insert){
             echo "<script>alert('Sukses melakukan registrasi');location.href='register.php';</script>";
         } else {
             echo "<script>alert('Gagal melakukan registrasi');location.href='register.php';</script>";
         }
     }
-
 ?>
